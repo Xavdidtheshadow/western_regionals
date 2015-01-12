@@ -1,0 +1,121 @@
+<form class="form-horizontal">
+  <fieldset>
+  <!-- <ul> -->
+    <!-- <li ng-repeat="n in names">{{n}}</li> -->
+  <!-- </li> -->
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="name">Full Name</label>  
+    <div class="col-md-4">
+    <input id="name" name="name" type="text" placeholder="Andrew Axtell" class="form-control input-md" required="">
+      
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="email">Email</label>  
+    <div class="col-md-4">
+    <input id="email" name="email" type="text" placeholder="mal@serenity.co" class="form-control input-md" required="">
+      
+    </div>
+  </div>
+
+  <!-- Multiple Checkboxes -->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="available">Which days are you available?</label>
+    <div class="col-md-4">
+    <div class="checkbox">
+      <label for="available-0">
+        <input type="checkbox" name="available" id="available-0" value="sat">
+        Saturday (2/14)
+      </label>
+    </div>
+    <div class="checkbox">
+      <label for="available-1">
+        <input type="checkbox" name="available" id="available-1" value="sun">
+        Sunday (2/15)
+      </label>
+    </div>
+    </div>
+  </div>
+
+  <!-- Multiple Checkboxes -->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="qual">What positions do you want (and are qualified) to ref?</label>
+    <div class="col-md-4">
+    <div class="checkbox">
+      <label for="qual-0">
+        <input type="checkbox" name="qual" id="qual-0" value="hr">
+        HR
+      </label>
+    </div>
+    <div class="checkbox">
+      <label for="qual-1">
+        <input type="checkbox" name="qual" id="qual-1" value="sr">
+        SR
+      </label>
+    </div>
+    <div class="checkbox">
+      <label for="qual-2">
+        <input type="checkbox" name="qual" id="qual-2" value="ar">
+        AR
+      </label>
+    </div>
+    <div class="checkbox">
+      <label for="qual-3">
+        <input type="checkbox" name="qual" id="qual-3" value="gr">
+        Goal Ref
+      </label>
+    </div>
+    </div>
+  </div>
+
+  <!-- Multiple Radios -->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="playing">Are you playing during this tournament?</label>
+    <div class="col-md-4">
+    <div class="radio">
+      <label for="playing-0">
+        <input type="radio" name="playing" id="playing-0" value="yes" checked="checked">
+        Yes
+      </label>
+    </div>
+    <div class="radio">
+      <label for="playing-1">
+        <input type="radio" name="playing" id="playing-1" value="no">
+        No
+      </label>
+    </div>
+    </div>
+  </div>
+
+  <!-- Select Basic -->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="team">What team are you associated with, if any?</label>
+    <div class="col-md-4">
+      <select id="team" name="team" class="form-control">
+        <option value="1">Option one</option>
+        <option value="2">Option two</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Textarea -->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="extra">Anything else we should know?</label>
+    <div class="col-md-4">                     
+      <textarea class="form-control" id="extra" name="extra"></textarea>
+    </div>
+  </div>
+
+  <!-- Button -->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="submit">Submit</label>
+    <div class="col-md-4">
+      <button id="submit" name="submit" class="btn btn-primary">Go!</button>
+    </div>
+  </div>
+
+  </fieldset>
+</form>
