@@ -4,9 +4,9 @@ A quick proof of concept MEAN stack site for trakcing volunteer signups at [USQ'
 
 ## The Stack
 
-* __M__ongo
-* __E__xpress
-* __A__ngular
-* __N__ode
+* <b>M</b>ongo
+* <b>E</b>xpress
+* <b>A</b>ngular
+* <b>N</b>ode
 
 Hosted on [Heroku](https://heroku.com) with the database hosted at [MongoLab](https://mongolab.com/), fo free.
