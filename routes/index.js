@@ -3,7 +3,7 @@ var router = express.Router();
 
 // root
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Western Regionals' });
+  res.render('index', { title: 'Register to Volunteer' });
 });
 
 // API
