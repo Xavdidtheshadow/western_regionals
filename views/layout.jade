@@ -1,0 +1,25 @@
+doctype html(lang='en')
+html
+  include ./partials/head.jade
+     
+  body(ng-app='westernRegionals')
+    nav#big-bar.navbar(role='navigation')
+      .container-fluid
+        .navbar-header
+          a(href='/')
+            p.brand.navbar-brand Western Cup VI
+                 
+        div
+          ul.nav.navbar-nav
+            li#users
+              a(href='/users') Stats
+                       
+            li#check
+              a(href='/check') Have I Registered?
+         
+    .mid(ng-controller='MainCtrl')
+      h2= title  
+             
+      block content
+
+    include ./partials/scripts.jade

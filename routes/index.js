@@ -5,11 +5,11 @@ var router = express.Router();
 
 // root
 router.get('/', function(req, res) {
-  res.render('index', {title: 'Register to Volunteer', partial: 'form'});
+  res.render('index', {title: 'Register to Volunteer'});
 });
 
 router.get('/check', function(req, res){
-  res.render('havei', {title: 'Have you?', partial: 'havei'});
+  res.render('havei', {title: 'Have you?'});
 });
 
 // API
