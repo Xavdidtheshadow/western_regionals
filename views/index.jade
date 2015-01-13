@@ -7,12 +7,12 @@ block content
         .form-group
           label.col-md-4.control-label(for='name') Full Name
           .col-md-4
-            input#name.form-control.input-md(name='name', type='text', placeholder='Andrew Axtell', required='')
+            input#name.form-control.input-md(name='name', type='text', placeholder='Andrew Axtell', required)
         // Text input
         .form-group
           label.col-md-4.control-label(for='email') Email
           .col-md-4
-            input#email.form-control.input-md(name='email', type='text', placeholder='mal@serenity.co', required='')
+            input#email.form-control.input-md(name='email', type='text', placeholder='mal@serenity.co', required)
         // Multiple Checkboxes
         .form-group
           label.col-md-4.control-label(for='available') Which days are you available?
@@ -32,19 +32,24 @@ block content
             .checkbox
               label(for='qual-0')
                 input#qual-0(type='checkbox', name='qual', value='hr')
-                |         HR
+                | HR
             .checkbox
               label(for='qual-1')
                 input#qual-1(type='checkbox', name='qual', value='sr')
-                |         SR
+                | SR
             .checkbox
               label(for='qual-2')
                 input#qual-2(type='checkbox', name='qual', value='ar')
-                |         AR
+                | AR
             .checkbox
               label(for='qual-3')
                 input#qual-3(type='checkbox', name='qual', value='gr')
-                |         Goal Ref
+                | Goal Ref
+            .checkbox
+              label(for='qual-4')
+                input#qual-4(type='checkbox', name='qual', value='sk')
+                | Scorekeeper
+
         // Multiple Radios
         .form-group
           label.col-md-4.control-label(for='playing') Are you playing during this tournament?
@@ -52,11 +57,11 @@ block content
             .radio
               label(for='playing-0')
                 input#playing-0(type='radio', name='playing', value='yes', checked='checked')
-                |         Yes
+                | Yes
             .radio
               label(for='playing-1')
                 input#playing-1(type='radio', name='playing', value='no')
-                |         No
+                | No
         // Select Basic
         .form-group
           label.col-md-4.control-label(for='team') What team are you associated with, if any?
