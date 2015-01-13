@@ -1,10 +1,10 @@
 body {
-  padding: 10px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding: 10px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #228B22;
+    color: #228B22;
 }
 
 .mid {
@@ -13,7 +13,7 @@ a {
     padding-left: 3%;
 }
 
-#big-bar {
+.navbar {
     border-radius: 0;
 }
 
@@ -30,4 +30,11 @@ a {
 
 .brand {
     border-bottom: 3px solid #228B22;
+}
+
+/* tablet or smaller */
+@media only screen and (max-device-width: 786px) {
+    .form-box {
+        width: 90%;
+    }
 }

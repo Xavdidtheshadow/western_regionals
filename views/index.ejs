@@ -27,13 +27,8 @@
 
       <div>
         <ul class="nav navbar-nav">
-          <li id="users"><a href="/users">Users</a></li>
-          <li id="orgs"><a href="/orgs">Orgs</a></li>
-          <li id="bugreport"><a href="/bugreport">Bug Report</a></li>
-          <li id="teambugs"><a href="/teambugs">Team Bugs</a></li>
-          <li id="quality"><a href="/quality">Quality History</a></li>
-          <li id="settings"><a href="/settings">AppSettings</a></li>
-          <!-- <li id="info"><a href="https://github.com/relateiq/annie/blob/master/README.md" target="_blank">Info</a></li> -->
+          <li id="users"><a href="/users">Stats</a></li>
+          <li id="check"><a href="/check">Have I Registered?</a></li>
         </ul>
       </div>
     </div>
@@ -43,7 +38,7 @@
     <h2> <%= title %> </h2>
     
       <div class="form-box">
-        <% include form %>
+        <% include <%= partial %> %>
       </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

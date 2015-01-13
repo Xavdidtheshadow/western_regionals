@@ -1,9 +1,15 @@
 var express = require('express');
 var router = express.Router();
 
+// routes
+
 // root
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Register to Volunteer' });
+  res.render('index', {title: 'Register to Volunteer', partial: 'form'});
+});
+
+router.get('/check', function(req, res){
+  res.render('havei', {title: 'Have you?', partial: 'havei'});
 });
 
 // API
