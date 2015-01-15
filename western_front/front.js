@@ -27,17 +27,52 @@ var app = angular.module('westernRegionals', ['ui.router','selectize'])
       // $locationProvider.html5Mode(true);
     }
   ])
+  .factory('db', ['$http', function($http){
+    var o = {
+      teams: []
+    };
+
+    o.getTeams = function(){
+      return $http.get('/teams').success(function(data){
+        angular.copy(data, o.teams);
+      });
+    };
+  }])
   .controller('MainCtrl', ['$scope', function($scope){
-    $scope.david = 'asdf';
-    $scope.names = ['a','b','c'];
+    
   }])
   .controller('CheckCtrl', ['$scope', function($scope){
-    $scope.david = 'qwer';
-    $scope.teams = ["Anteater Quidditch", "Arizona Quidditch Club", "Arizona State University", "Cal Quidditch", "California Dobbys", "Crimson Elite", "Crimson Fliers", "Los Angeles Gambits", "Mission Blues Quidditch", "NAU Narwhals", "Riverside Quidditch", "San Jose State University Spartans", "Santa Barbara Blacktips", "Silicon Valley Skrewts", "Silicon Valley Skyfighters", "Stanford Quidditch", "The Long Beach Funky Quaffles", "The Lost Boys", "University of Arizona Quidditch", "University of California Los Angeles", "University of Southern California", "Utah State Quidditch Club", "Wizards of Westwood"];
+    $scope.teams = [
+     {id: 1, name: "Anteater Quidditch"},
+     {id: 2, name: "Arizona Quidditch Club"},
+     {id: 3, name: "Arizona State University"},
+     {id: 4, name: "Cal Quidditch"},
+     {id: 5, name: "California Dobbys"},
+     {id: 6, name: "Crimson Elite"},
+     {id: 7, name: "Crimson Fliers"},
+     {id: 8, name: "Los Angeles Gambits"},
+     {id: 9, name: "Mission Blues Quidditch"},
+     {id: 10, name: "NAU Narwhals"},
+     {id: 11, name: "Riverside Quidditch"},
+     {id: 12, name: "San Jose State University Spartans"},
+     {id: 13, name: "Santa Barbara Blacktips"},
+     {id: 14, name: "Silicon Valley Skrewts"},
+     {id: 15, name: "Silicon Valley Skyfighters"},
+     {id: 16, name: "Stanford Quidditch"},
+     {id: 17, name: "The Long Beach Funky Quaffles"},
+     {id: 18, name: "The Lost Boys"},
+     {id: 19, name: "University of Arizona Quidditch"},
+     {id: 20, name: "University of California Los Angeles"},
+     {id: 21, name: "University of Southern California"},
+     {id: 22, name: "Utah State Quidditch Club"},
+     {id: 23, name: "Wizards of Westwood"}
+    ];
 
     $scope.conf = {
       create: false,
       options: $scope.teams,
+      valueField: 'id',
+      labelField: 'name',
       sortField: 'id',
       maxItems: 1,
       placeholder: 'Type your team'
