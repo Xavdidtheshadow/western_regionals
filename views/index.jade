@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  {{david}}
   .form-box
     form.form-horizontal
       fieldset
@@ -20,11 +21,11 @@ block content
             .checkbox
               label(for='available-0')
                 input#available-0(type='checkbox', name='available', value='sat')
-                |         Saturday (2/14)
+                | Saturday (2/14)
             .checkbox
               label(for='available-1')
                 input#available-1(type='checkbox', name='available', value='sun')
-                |         Sunday (2/15)
+                | Sunday (2/15)
         // Multiple Checkboxes
         .form-group
           label.col-md-4.control-label(for='qual') What positions do you want (and are qualified) to ref?
