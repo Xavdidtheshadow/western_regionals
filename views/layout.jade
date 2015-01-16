@@ -6,20 +6,24 @@ html
     nav#big-bar.navbar(role='navigation')
       .container-fluid
         .navbar-header
-          a(href='/')
+          a(ui-sref='/')
             p.brand.navbar-brand Western Cup VI
                  
         div
           ul.nav.navbar-nav
-            li#users
-              a(href='/users') Stats
+            //- li#users
+              //- a(ui-sref='/users') Stats
                        
             li#check
-              a(href='/check') Have I Registered?
+              a(ui-sref='/check') Have I Registered?
          
-    .mid(ng-controller='MainCtrl')
-      h2= title  
+    .mid
+      h2= title 
+
+      div(ui-view)
+
+
              
-      block content
+      //- block content
 
     include ./partials/scripts.jade

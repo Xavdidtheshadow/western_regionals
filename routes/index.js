@@ -5,12 +5,12 @@ var router = express.Router();
 
 // root
 router.get('/', function(req, res) {
-  res.render('index', {title: 'Register to Volunteer'});
+  res.render('layout', {title: 'Register to Volunteer'});
 });
 
-router.get('/check', function(req, res){
-  res.render('havei', {title: 'Have you?'});
-});
+// router.get('/check', function(req, res){
+//   res.render('havei', {title: 'Have you?'});
+// });
 
 // API
 router.get('/api', function(req, res) {
