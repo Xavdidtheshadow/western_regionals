@@ -1,3 +1,5 @@
+// only the avatar, master of all 4 elements, could stop them
+
 var app = angular.module('westernRegionals', ['ui.router','selectize'])
   .config([
     '$stateProvider',
@@ -6,13 +8,12 @@ var app = angular.module('westernRegionals', ['ui.router','selectize'])
       $stateProvider
         .state('home', {
           url: '/',
-          templateUrl: "base.html",
+          templateUrl: "form.html",
           controller: "MainCtrl"
-
         })
         .state('check', {
             url: '/check',
-            templateUrl: "form.html",
+            templateUrl: "base.html",
             controller: "CheckCtrl"
             // resolve: {
             //     post: ['$stateParams', 'posts', function($stateParams, posts){
@@ -39,9 +40,10 @@ var app = angular.module('westernRegionals', ['ui.router','selectize'])
     };
   }])
   .controller('MainCtrl', ['$scope', function($scope){
-    
+    console.log('in main');
   }])
   .controller('CheckCtrl', ['$scope', function($scope){
+    console.log('in check');
     $scope.teams = [
      {id: 1, name: "Anteater Quidditch"},
      {id: 2, name: "Arizona Quidditch Club"},

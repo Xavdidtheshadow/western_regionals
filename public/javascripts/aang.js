@@ -8,12 +8,12 @@ var app = angular.module('westernRegionals', ['ui.router','selectize'])
       $stateProvider
         .state('home', {
           url: '/',
-          templateUrl: "../views/form.html",
+          templateUrl: "/views/form.html",
           controller: "MainCtrl"
         })
         .state('check', {
             url: '/check',
-            templateUrl: "../views/base.html",
+            templateUrl: "/views/base.html",
             controller: "CheckCtrl"
             // resolve: {
             //     post: ['$stateParams', 'posts', function($stateParams, posts){
@@ -40,10 +40,9 @@ var app = angular.module('westernRegionals', ['ui.router','selectize'])
     };
   }])
   .controller('MainCtrl', ['$scope', function($scope){
-    console.log('in main');
+    $scope.teams = "fuck you";
   }])
   .controller('CheckCtrl', ['$scope', function($scope){
-    console.log('in check');
     $scope.teams = [
      {id: 1, name: "Anteater Quidditch"},
      {id: 2, name: "Arizona Quidditch Club"},

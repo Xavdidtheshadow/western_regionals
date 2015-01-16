@@ -18,13 +18,13 @@ html
               a(ui-sref='check') Have I Registered?
          
     .mid
-      p  title here?
+      p  title here? {{teams}}
       h2= title 
 
       div(ui-view)
 
       p y no view
-             
-      //- block content
+
+      block content
 
     include ./partials/scripts.jade
