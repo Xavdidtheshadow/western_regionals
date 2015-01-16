@@ -1,0 +1,44 @@
+<!DOCTYPE html(lang='en')>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title></title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"/>
+  <link rel="stylesheet" href="/stylesheets/selectize.bootstrap3.css"/>
+  <link rel="stylesheet" href="/stylesheets/the.css"/><!--[if lt IE 9]>
+  <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+</head>
+  <body ng-app="westernRegionals">
+    <nav id="big-bar" role="navigation" class="navbar">
+      <div class="container-fluid">
+        <div class="navbar-header"><a ui-sref="home">
+            <p class="brand navbar-brand">Western Cup VI</p></a></div>
+        <div>
+          <ul class="nav navbar-nav">
+            <li id="check"><a ui-sref="check">Have I Registered?</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="mid">
+      <p> title hiz? {{teams}}</p>
+      <h2></h2>
+      <div ui-view="ui-view"></div>
+      <p>y no view</p>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
+    <script src="/javascripts/selectize.min.js"></script>
+    <script src="/javascripts/selectize.js"></script>
+    <script src="/javascripts/aang.js"></script>
+
+  </body>
+</html>
+    
