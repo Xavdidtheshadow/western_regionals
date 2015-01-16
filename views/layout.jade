@@ -6,7 +6,7 @@ html
     nav#big-bar.navbar(role='navigation')
       .container-fluid
         .navbar-header
-          a(ui-sref='/')
+          a(ui-sref='home')
             p.brand.navbar-brand Western Cup VI
                  
         div
@@ -15,14 +15,15 @@ html
               //- a(ui-sref='/users') Stats
                        
             li#check
-              a(ui-sref='/check') Have I Registered?
+              a(ui-sref='check') Have I Registered?
          
     .mid
+      p  title here?
       h2= title 
 
       div(ui-view)
 
-
+      p y no view
              
       //- block content
 

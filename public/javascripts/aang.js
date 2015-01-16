@@ -1,3 +1,5 @@
+// only the avatar, master of all 4 elements, could stop them
+
 var app = angular.module('westernRegionals', ['ui.router','selectize'])
   .config([
     '$stateProvider',
@@ -6,12 +8,12 @@ var app = angular.module('westernRegionals', ['ui.router','selectize'])
       $stateProvider
         .state('home', {
           url: '/',
-          templateUrl: "index",
+          templateUrl: "../views/form.html",
           controller: "MainCtrl"
         })
         .state('check', {
             url: '/check',
-            templateUrl: "havei",
+            templateUrl: "../views/base.html",
             controller: "CheckCtrl"
             // resolve: {
             //     post: ['$stateParams', 'posts', function($stateParams, posts){
