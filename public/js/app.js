@@ -50,7 +50,22 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
   .controller('MainController', ['$scope', 'db', function($scope, db){
     $scope.title = 'Register to Volunteer!';
 
-    $scope.myModel = {};
+    $scope.formModel = {};
+
+    $scope.formModel.quals = [
+      {key: "hr", status: false, name: "Head Referee"},
+      {key: "sr", status: false, name: "Snitch Referee"},
+      {key: "ar", status: false, name: "Assistant Referee"},
+      {key: "gr", status: false, name: "Goal Referee"},
+      {key: "sc", status: false, name: "Scorekeeper"}
+    ];
+
+    $scope.formModel.dates = {
+      sat: {status: true, name: "Saturday (2/14)"},
+      sun: {status: true, name: "Sunday (2/15)"}
+    };
+
+    $scope.formModel.playing = "true";
 
     $scope.conf = {
       create: false,

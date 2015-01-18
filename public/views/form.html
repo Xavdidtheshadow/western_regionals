@@ -1,6 +1,7 @@
 <h2>
   {{title}}
 </h2>
+<!-- <pre>{{formModel | json}}</pre> -->
 <br>
 <div class="form-box">
   <form class="form-horizontal">
@@ -8,28 +9,23 @@
       <div class="form-group">
         <label for="name" class="col-md-4 control-label">Full Name</label>
         <div class="col-md-4">
-          <input id="name" name="name" type="text" placeholder="Andrew Axtell" required="required" class="form-control input-md"/>
+          <input id="name" name="name" type="text" placeholder="Andrew Axtell" required="required" class="form-control input-md" ng-model="formModel.name"/>
         </div>
       </div>
       <!-- Text input-->
       <div class="form-group">
         <label for="email" class="col-md-4 control-label">Email</label>
         <div class="col-md-4">
-          <input id="email" name="email" type="text" placeholder="drewbie@goblue.com" required="required" class="form-control input-md"/>
+          <input id="email" name="email" type="text" placeholder="drewbie@goblue.com" required="required" class="form-control input-md" ng-model="formModel.email"/>
         </div>
       </div>
       <!-- Multiple Checkboxes-->
       <div class="form-group">
         <label for="available" class="col-md-4 control-label">Which days are you available?</label>
         <div class="col-md-4">
-          <div class="checkbox">
-            <label for="available-0">
-              <input id="available-0" type="checkbox" name="available" value="sat"/>Saturday (2/14)
-            </label>
-          </div>
-          <div class="checkbox">
-            <label for="available-1">
-              <input id="available-1" type="checkbox" name="available" value="sun"/>Sunday (2/15)
+          <div class="checkbox" ng-repeat="(key, date) in formModel.dates">
+            <label ng-attr-for="{{'playing-' + key}}">
+              <input ng-attr-id="{{'playing-' + key}}" type="checkbox" ng-model="formModel.dates[key].status"/> {{ date.name }}
             </label>
           </div>
         </div>
@@ -38,29 +34,9 @@
       <div class="form-group">
         <label for="qual" class="col-md-4 control-label">What positions do you want (and are qualified) to ref?</label>
         <div class="col-md-4">
-          <div class="checkbox">
-            <label for="qual-0">
-              <input id="qual-0" type="checkbox" name="qual" value="hr"/>HR
-            </label>
-          </div>
-          <div class="checkbox">
-            <label for="qual-1">
-              <input id="qual-1" type="checkbox" name="qual" value="sr"/>SR
-            </label>
-          </div>
-          <div class="checkbox">
-            <label for="qual-2">
-              <input id="qual-2" type="checkbox" name="qual" value="ar"/>AR
-            </label>
-          </div>
-          <div class="checkbox">
-            <label for="qual-3">
-              <input id="qual-3" type="checkbox" name="qual" value="gr"/>Goal Ref
-            </label>
-          </div>
-          <div class="checkbox">
-            <label for="qual-4">
-              <input id="qual-4" type="checkbox" name="qual" value="sk"/>Scorekeeper
+          <div class="checkbox" ng-repeat="qual in formModel.quals">
+            <label ng-attr-for="{{'qual-' + qual.key}}">
+              <input ng-attr-id="{{'qual-' + qual.key}}" type="checkbox" ng-model="formModel.quals[$index].status"/> {{ qual.name }}
             </label>
           </div>
         </div>
@@ -71,12 +47,12 @@
         <div class="col-md-4">
           <div class="radio">
             <label for="playing-0">
-              <input id="playing-0" type="radio" name="playing" value="yes" checked="checked"/>Yes
+              <input id="playing-0" type="radio" name="playing" value="true" checked="checked" ng-model="formModel.playing"/>Yes
             </label>
           </div>
           <div class="radio">
             <label for="playing-1">
-              <input id="playing-1" type="radio" name="playing" value="no"/>No
+              <input id="playing-1" type="radio" name="playing" value="false" ng-model="formModel.playing"/>No
             </label>
           </div>
         </div>
@@ -86,7 +62,7 @@
         <label for="team" class="col-md-4 control-label">What team are you associated with, if any?</label>
         <div class="col-md-4">
           <!-- <select id="team" name="team" class="form-control" ng-model="selectedItem" ng-options="team for team in teams"></select> -->
-          <selectize config="conf" ng-model="myModel.team"></selectize>
+          <selectize config="conf" ng-model="formModel.team"></selectize>
           
         </div>
       </div>
@@ -94,7 +70,7 @@
       <div class="form-group">
         <label for="extra" class="col-md-4 control-label">Anything else we should know?</label>
         <div class="col-md-4">
-          <textarea id="extra" name="extra" class="form-control"></textarea>
+          <textarea id="extra" name="extra" class="form-control" ng-model="formModel.other"></textarea>
         </div>
       </div>
       <!-- Button-->

@@ -2,7 +2,12 @@ var mongoose = require('mongoose');
 
 var PersonSchema = new mongoose.Schema({
   name: String,
-  team: {type: mongoose.Schema.Types.ObjectId, ref: "Team"}
+  email: String,
+  available: Array,
+  qualifications: Array,
+  player: Boolean,
+  team: {type: mongoose.Schema.Types.ObjectId, ref: "Team"},
+  other: String
 });
 
 mongoose.model('Person', PersonSchema);
