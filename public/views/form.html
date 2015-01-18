@@ -1,4 +1,6 @@
-form
+<h2>
+  {{title}}
+</h2>
 <br>
 <div class="form-box">
   <form class="form-horizontal">
@@ -13,7 +15,7 @@ form
       <div class="form-group">
         <label for="email" class="col-md-4 control-label">Email</label>
         <div class="col-md-4">
-          <input id="email" name="email" type="text" placeholder="mal@serenity.co" required="required" class="form-control input-md"/>
+          <input id="email" name="email" type="text" placeholder="Drewbie@goblue.com" required="required" class="form-control input-md"/>
         </div>
       </div>
       <!-- Multiple Checkboxes-->
@@ -83,9 +85,9 @@ form
       <div class="form-group">
         <label for="team" class="col-md-4 control-label">What team are you associated with, if any?</label>
         <div class="col-md-4">
-          <!-- <select id="team" name="team" class="form-control" ng-model="selectedItem" ng-options="team for team in teams"> -->
+          <!-- <select id="team" name="team" class="form-control" ng-model="selectedItem" ng-options="team for team in teams"></select> -->
           <selectize config="conf" ng-model="myModel"></selectize>
-          </select>
+          
         </div>
       </div>
       <!-- Textarea-->
