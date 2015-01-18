@@ -62,7 +62,7 @@
         <label for="team" class="col-md-4 control-label">What team are you associated with, if any?</label>
         <div class="col-md-4">
           <!-- <select id="team" name="team" class="form-control" ng-model="selectedItem" ng-options="team for team in teams"></select> -->
-          <selectize config="conf" ng-model="formModel.team"></selectize>
+          <selectize config="conf" ng-model="formModel.team" required="required"></selectize>
           
         </div>
       </div>
@@ -83,7 +83,3 @@
     </fieldset>
   </form>
 </div>
-
-<script>
-  // $(document).ready(function(){$('select').selectize();});
-</script>

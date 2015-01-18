@@ -28,8 +28,12 @@ a {
     margin-left: 7px;
 }
 
-.brand {
+.active a {
     border-bottom: 3px solid #228B22;
+}
+
+.brand {
+    border: 1px solid #228B22;
 }
 
 /* tablet or smaller */

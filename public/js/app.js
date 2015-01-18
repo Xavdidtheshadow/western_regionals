@@ -16,14 +16,16 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
               return db.getTeams();
             }]
           },
-          controller: 'MainController'
+          controller: 'MainController',
+          activeTab: "home"
         })
 
 
         .state('check', {
           url: '/check',
           templateUrl: 'views/check.html',
-          controller: 'CheckController'
+          controller: 'CheckController',
+          activeTab: "check"
         });
 
       $urlRouterProvider.otherwise('/');
@@ -66,6 +68,7 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
     };
 
     $scope.formModel.playing = "true";
+    $scope.formModel.team = "54bb6231b613d914fb750506";
 
     $scope.conf = {
       create: false,
@@ -80,7 +83,6 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
 
   }])
 
-  .controller('CheckController', ['$scope','db', function($scope, db){
+  .controller('CheckController', ['$scope', 'db', function($scope, db){
     $scope.title = 'Check Registration Status';
-    console.log(db);
   }]);
