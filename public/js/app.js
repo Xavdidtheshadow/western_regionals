@@ -1,4 +1,4 @@
-var app = angular.module('sampleApp', ['selectize', 'ui.router'])
+var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
   .config([
     '$stateProvider', 
     '$urlRouterProvider',
