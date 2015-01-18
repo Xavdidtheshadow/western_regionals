@@ -1,18 +1,24 @@
 var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
+  
+  // config
   .config([
     '$stateProvider', 
     '$urlRouterProvider',
     '$locationProvider',
-    function($stateProvider, $urlRouterProvider, $locationProvider) {
+    function($stateProvider, $urlRouterProvider, $locationProvider){
 
       $stateProvider
-
-        // home page
         .state('home', {
           url: '/',
           templateUrl: 'views/form.html',
+          resolve: {
+            teamsPromise: ['db', function(db){
+              return db.getTeams();
+            }]
+          },
           controller: 'MainController'
         })
+
 
         .state('check', {
           url: '/check',
@@ -24,49 +30,42 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
 
       $locationProvider.html5Mode(true);
   }])
-  .controller('MainController', ['$scope', function($scope) {
+
+  // factories
+  .factory('db', ['$http', function($http){
+    var o = {
+      teams: []
+    };
+
+    o.getTeams = function(){
+      return $http.get('/api/teams').success(function(data){
+        angular.copy(data, o.teams);
+      });
+    };
+
+    return o;
+  }])
+
+  // controllers
+  .controller('MainController', ['$scope', 'db', function($scope, db){
     $scope.title = 'Register to Volunteer!';
 
-    $scope.teams = [
-     {id: 1, name: "Anteater Quidditch"},
-     {id: 2, name: "Arizona Quidditch Club"},
-     {id: 3, name: "Arizona State University"},
-     {id: 4, name: "Cal Quidditch"},
-     {id: 5, name: "California Dobbys"},
-     {id: 6, name: "Crimson Elite"},
-     {id: 7, name: "Crimson Fliers"},
-     {id: 8, name: "Los Angeles Gambits"},
-     {id: 9, name: "Mission Blues Quidditch"},
-     {id: 10, name: "NAU Narwhals"},
-     {id: 11, name: "Riverside Quidditch"},
-     {id: 12, name: "San Jose State University Spartans"},
-     {id: 13, name: "Santa Barbara Blacktips"},
-     {id: 14, name: "Silicon Valley Skrewts"},
-     {id: 15, name: "Silicon Valley Skyfighters"},
-     {id: 16, name: "Stanford Quidditch"},
-     {id: 17, name: "The Long Beach Funky Quaffles"},
-     {id: 18, name: "The Lost Boys"},
-     {id: 19, name: "University of Arizona Quidditch"},
-     {id: 20, name: "University of California Los Angeles"},
-     {id: 21, name: "University of Southern California"},
-     {id: 22, name: "Utah State Quidditch Club"},
-     {id: 23, name: "Wizards of Westwood"}
-    ];
-
-    $scope.myModel = "";
+    $scope.myModel = {};
 
     $scope.conf = {
       create: false,
-      options: $scope.teams,
-      valueField: 'id',
+      options: db.teams,
+      valueField: '_id',
       labelField: 'name',
-      sortField: 'id',
+      sortField: '_id',
       searchField: 'name',
       maxItems: 1,
       placeholder: 'Type your team'
     };
 
   }])
-  .controller('CheckController', ['$scope', function($scope) {
+
+  .controller('CheckController', ['$scope','db', function($scope, db){
     $scope.title = 'Check Registration Status';
+    console.log(db);
   }]);
