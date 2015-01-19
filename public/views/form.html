@@ -1,7 +1,7 @@
 <h2>
   {{title}}
 </h2>
-<pre>{{formModel | json}}</pre>
+<!-- <pre>{{formModel | json}}</pre> -->
 <br>
 <div class="form-box">
   <form class="form-horizontal">
@@ -23,9 +23,9 @@
       <div class="form-group">
         <label for="available" class="col-md-4 control-label">Which days are you available?</label>
         <div class="col-md-4">
-          <div class="checkbox" ng-repeat="(key, date) in formModel.available">
-            <label ng-attr-for="{{'playing-' + key}}">
-              <input ng-attr-id="{{'playing-' + key}}" type="checkbox" ng-model="formModel.available[key].status"/> {{ date.name }}
+          <div class="checkbox" ng-repeat="date in formModel.available">
+            <label ng-attr-for="{{'playing-' + date.key}}">
+              <input ng-attr-id="{{'playing-' + date.key}}" type="checkbox" ng-model="formModel.available[$index].status"/> {{ date.name }}
             </label>
           </div>
         </div>

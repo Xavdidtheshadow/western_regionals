@@ -19,8 +19,13 @@ a {
 
 .form-box {
     padding-top: 20px;
-    width: 650px;
+    padding-bottom: 20px;
+    width: 70%;
     clear: both;
+}
+
+.sm {
+    width: 40%;
 }
 
 .nav a {

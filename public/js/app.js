@@ -20,12 +20,17 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
           activeTab: "home"
         })
 
-
         .state('check', {
           url: '/check',
           templateUrl: 'views/check.html',
           controller: 'CheckController',
           activeTab: "check"
+        })
+
+        .state('confirm', {
+          url: '/confirm',
+          templateUrl: 'views/conf.html',
+          controller: 'ConfController',
         });
 
       $urlRouterProvider.otherwise('/');
@@ -55,17 +60,17 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
   }])
 
   // controllers
-  .controller('MainController', ['$scope', 'db', function($scope, db){
+  .controller('MainController', ['$scope', '$state', 'db', function($scope, $state, db){
     $scope.title = 'Register to Volunteer!';
 
     // initialize model
     $scope.formModel = {};
     $scope.formModel.name = '';
     $scope.formModel.email = '';
-    $scope.formModel.available = {
-      sat: {status: true, name: "Saturday (2/14)"},
-      sun: {status: true, name: "Sunday (2/15)"}
-    };
+    $scope.formModel.available = [
+      {key: "sat", status: true, name: "Saturday (2/14)"},
+      {key: "sun", status: true, name: "Sunday (2/15)"}
+    ];
 
     $scope.formModel.qualifications = [
       {key: "hr", status: false, name: "Head Referee"},
@@ -100,6 +105,7 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
       $scope.loading = true;
       db.createPerson($scope.formModel).success(function(data){
         $scope.loading = false;
+        $state.go('confirm');
       });
     };
 
@@ -107,4 +113,15 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
 
   .controller('CheckController', ['$scope', 'db', function($scope, db){
     $scope.title = 'Check Registration Status';
+  }])
+
+  .controller('ConfController', ['$scope', 'db', function($scope, db){
+    // $scope.info = db.info;
+    $scope.info = [
+      {key: "hr", status: true, name: "Head Referee"},
+      {key: "sr", status: false, name: "Snitch Referee"},
+      {key: "ar", status: true, name: "Assistant Referee"},
+      {key: "gr", status: false, name: "Goal Referee"},
+      {key: "sc", status: false, name: "Scorekeeper"}
+    ];
   }]);

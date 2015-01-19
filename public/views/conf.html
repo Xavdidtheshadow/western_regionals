@@ -1,0 +1,13 @@
+<h2> You're Registered! </h2>
+
+<div class="form-box sm">
+    <pre>{{info | json}}</pre>
+
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="qual in info">
+            <span ng-show="qual.status" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            <span ng-show="!qual.status" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            {{' ' + qual.name}}
+        </li>
+    </ul>
+</div>
