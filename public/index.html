@@ -10,7 +10,8 @@
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="libs/selectize/dist/css/selectize.bootstrap3.css ">
+	<link rel="stylesheet" href="libs/selectize/dist/css/selectize.bootstrap3.css">
+    <link rel="stylesheet" href="libs/fontawesome/css.font-awesome.min.css">
 	<link rel="stylesheet" href="css/the.css"> <!-- custom styles -->
 </head>
 <body ng-app="westernRegionals">
@@ -21,14 +22,10 @@
         <div>
           <ul class="nav navbar-nav">
             <li ui-sref-active="active" id="home">
-                <!-- <div> -->
-                    <a ui-sref="home">Register!</a>
-                <!-- </div> -->
+                <a ui-sref="home">Register!</a>
             </li>
             <li ui-sref-active="active" id="check">
-                <!-- <div> -->
-                    <a ui-sref="check">Have I Registered?</a>
-                <!-- </div> -->
+                <a ui-sref="check">Have I Registered?</a>
             </li>
           </ul>
         </div>
@@ -37,7 +34,9 @@
 
     <div class="mid">
       	<!-- ANGULAR DYNAMIC CONTENT -->
-		<div ui-view></div>
+		<div ui-view>
+            Pulling Team Info    
+        </div>
     </div>
 
 	<!-- JS -->

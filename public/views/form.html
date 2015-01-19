@@ -1,7 +1,7 @@
 <h2>
   {{title}}
 </h2>
-<!-- <pre>{{formModel | json}}</pre> -->
+<pre>{{formModel | json}}</pre>
 <br>
 <div class="form-box">
   <form class="form-horizontal">
@@ -23,9 +23,9 @@
       <div class="form-group">
         <label for="available" class="col-md-4 control-label">Which days are you available?</label>
         <div class="col-md-4">
-          <div class="checkbox" ng-repeat="(key, date) in formModel.dates">
+          <div class="checkbox" ng-repeat="(key, date) in formModel.available">
             <label ng-attr-for="{{'playing-' + key}}">
-              <input ng-attr-id="{{'playing-' + key}}" type="checkbox" ng-model="formModel.dates[key].status"/> {{ date.name }}
+              <input ng-attr-id="{{'playing-' + key}}" type="checkbox" ng-model="formModel.available[key].status"/> {{ date.name }}
             </label>
           </div>
         </div>
@@ -34,9 +34,9 @@
       <div class="form-group">
         <label for="qual" class="col-md-4 control-label">What positions do you want (and are qualified) to ref?</label>
         <div class="col-md-4">
-          <div class="checkbox" ng-repeat="qual in formModel.quals">
+          <div class="checkbox" ng-repeat="qual in formModel.qualifications">
             <label ng-attr-for="{{'qual-' + qual.key}}">
-              <input ng-attr-id="{{'qual-' + qual.key}}" type="checkbox" ng-model="formModel.quals[$index].status"/> {{ qual.name }}
+              <input ng-attr-id="{{'qual-' + qual.key}}" type="checkbox" ng-model="formModel.qualifications[$index].status"/> {{ qual.name }}
             </label>
           </div>
         </div>
@@ -77,9 +77,10 @@
       <div class="form-group">
         <label for="submit" class="col-md-4 control-label">Submit</label>
         <div class="col-md-4">
-          <button id="submit" name="submit" class="btn btn-primary">Go!</button>
+          <button id="submit" name="submit" class="btn btn-primary" ng-click="createPerson()">Go!</button>
         </div>
       </div>
+      {{ loading }}
     </fieldset>
   </form>
 </div>

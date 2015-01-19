@@ -45,6 +45,12 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
       });
     };
 
+    o.createPerson = function(p){
+      return $http.post('/api/persons', p).success(function(data){
+        o.info = data;
+      });
+    };
+
     return o;
   }])
 
@@ -52,9 +58,16 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
   .controller('MainController', ['$scope', 'db', function($scope, db){
     $scope.title = 'Register to Volunteer!';
 
+    // initialize model
     $scope.formModel = {};
+    $scope.formModel.name = '';
+    $scope.formModel.email = '';
+    $scope.formModel.available = {
+      sat: {status: true, name: "Saturday (2/14)"},
+      sun: {status: true, name: "Sunday (2/15)"}
+    };
 
-    $scope.formModel.quals = [
+    $scope.formModel.qualifications = [
       {key: "hr", status: false, name: "Head Referee"},
       {key: "sr", status: false, name: "Snitch Referee"},
       {key: "ar", status: false, name: "Assistant Referee"},
@@ -62,13 +75,9 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
       {key: "sc", status: false, name: "Scorekeeper"}
     ];
 
-    $scope.formModel.dates = {
-      sat: {status: true, name: "Saturday (2/14)"},
-      sun: {status: true, name: "Sunday (2/15)"}
-    };
-
     $scope.formModel.playing = "true";
     $scope.formModel.team = "54bb6231b613d914fb750506";
+    $scope.formModel.other = '';
 
     $scope.conf = {
       create: false,
@@ -79,6 +88,19 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
       searchField: 'name',
       maxItems: 1,
       placeholder: 'Type your team'
+    };
+
+    $scope.loading = false;
+
+    $scope.createPerson = function(){
+      // fake some validation
+      if ($scope.formModel.name === '' || $scope.formModel.email === '')
+        {return;}
+      // console.log('zoom!');
+      $scope.loading = true;
+      db.createPerson($scope.formModel).success(function(data){
+        $scope.loading = false;
+      });
     };
 
   }])

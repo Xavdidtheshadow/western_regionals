@@ -8,8 +8,16 @@ module.exports = function(app) {
 	app.get('/api/teams', function(req, res, next){
     Team.find(function(err, teams){
       if(err){return next(err);}
-
       res.json(teams);
+    });
+  });
+
+  app.post('/api/persons', function(req, res, next){
+    var p = new Person(req.body);
+
+    p.save(function(err, pers){
+      if(err){return next(err);}
+      res.json(pers);
     });
   });
 
