@@ -5,7 +5,6 @@
     "bootstrap": "latest",
     "angular": "latest",
     "angular-ui-router": "latest",
-    "angular-selectize2": "latest",
-    "fontawesome": "~4.2.0"
+    "angular-selectize2": "latest"
   }
 }
