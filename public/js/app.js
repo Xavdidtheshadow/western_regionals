@@ -6,7 +6,6 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
     '$urlRouterProvider',
     '$locationProvider',
     function($stateProvider, $urlRouterProvider, $locationProvider){
-
       $stateProvider
         .state('home', {
           url: '/',
@@ -16,21 +15,18 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
               return db.getTeams();
             }]
           },
-          controller: 'MainController',
-          activeTab: "home"
+          controller: 'MainController'
         })
 
         .state('check', {
           url: '/check',
           templateUrl: 'views/check.html',
-          controller: 'CheckController',
-          activeTab: "check"
+          controller: 'CheckController'
         })
 
         .state('info', {
           url: '/info',
-          templateUrl: 'views/info.html',
-          activeTab: "info"
+          templateUrl: 'views/info.html'
         })
 
         .state('confirm', {
@@ -40,7 +36,6 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
         });
 
       $urlRouterProvider.otherwise('/');
-
       $locationProvider.html5Mode(true);
   }])
 
@@ -62,13 +57,17 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
       });
     };
 
+    o.findPerson = function(e){
+      return $http.get('/api/search/' + e).success(function(data){
+        o.person = data;
+      });
+    };
+
     return o;
   }])
 
   // controllers
   .controller('MainController', ['$scope', '$state', 'db', function($scope, $state, db){
-    $scope.title = 'Register to Volunteer!';
-
     // initialize model
     $scope.formModel = {};
     $scope.formModel.name = '';
@@ -106,23 +105,32 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
       // fake some validation
       if ($scope.formModel.name === '' || $scope.formModel.email === '')
         {return;}
-      
-      // mongoose isn't casting correctly
-      // $scope.formModel.playing = $scope.formModel.playingStr === 'true';
 
       db.createPerson($scope.formModel)
         .success(function(data){
           $state.go('confirm');
         })
         .error(function(err){
-          $scope.error = "Server Error! Probably caused by trying to use a non-unique email. If the issue persists, contact";
+          $scope.error = "Server Error! Probably caused by trying to use a non-unique email. If the issue persists, contact"; // email in view
         });
     };
-
   }])
 
   .controller('CheckController', ['$scope', 'db', function($scope, db){
-    $scope.title = 'Check Registration Status';
+    $scope.model = {email: ''};
+    $scope.message = "";
+
+    $scope.searchPerson = function(){
+      db.findPerson($scope.model.email)
+        .success(function(data){
+          if(data){
+            $scope.message = "You've registered!";
+          }
+          else {
+            $scope.message = "No registration with that email found.";
+          }
+        });
+    };
   }])
 
   .controller('ConfController', ['$scope', 'db', function($scope, db){
@@ -133,5 +141,4 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
       true: 'info',
       false: 'danger'
     };
-
   }]);

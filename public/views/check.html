@@ -1,3 +1,31 @@
-<h2> {{title}} </h2>
+<h1> Check Your Registration Status </h1>
+<br/>
 
-<p> NO </p>
+<p> Now you don't have to email the organizers! </p>
+<br/>
+
+<div class="form-box">
+    <form class="form-horizontal">
+    <fieldset>
+    <div class="form-group">
+        <label for="email" class="col-md-4 control-label">Email</label>
+        <div class="col-md-4">
+            <input id="email" name="email" type="text" placeholder="drewbie@goblue.com" required="required" class="form-control input-md" ng-model="model.email"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="submit" class="col-md-4 control-label">Submit</label>
+        <div class="col-md-4">
+            <button id="submit" name="submit" class="btn btn-primary" ng-click="searchPerson()">Go!</button> 
+            <div class="error" ng-show="error">
+                {{error}} <a href="mailto:david@relatieq.com">David</a>
+            </div>
+        </div>
+    </div>
+    </fieldset>
+    </form>
+    <br>
+    
+    <h3 ng-show="message">{{message}}</h3>
+</div>
