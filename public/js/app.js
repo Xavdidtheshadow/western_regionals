@@ -117,11 +117,42 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
 
   .controller('ConfController', ['$scope', 'db', function($scope, db){
     // $scope.info = db.info;
-    $scope.info = [
+
+    // I can't beleive JS allows this
+    $scope.colors = {
+      true: 'info',
+      false: 'danger'
+    };
+
+    $scope.formModel = {};
+    $scope.formModel.name = 'David Brownman';
+    $scope.formModel.email = '';
+    $scope.formModel.available = [
+      {key: "sat", status: true, name: "Saturday (2/14)"},
+      {key: "sun", status: false, name: "Sunday (2/15)"}
+    ];
+
+    $scope.formModel.qualifications = [
       {key: "hr", status: true, name: "Head Referee"},
       {key: "sr", status: false, name: "Snitch Referee"},
       {key: "ar", status: true, name: "Assistant Referee"},
       {key: "gr", status: false, name: "Goal Referee"},
       {key: "sc", status: false, name: "Scorekeeper"}
     ];
+
+    $scope.formModel.playing = "true";
+    $scope.formModel.team = "54bb6231b613d914fb750506";
+    $scope.formModel.other = '';
+
+    $scope.conf = {
+      create: false,
+      options: db.teams,
+      valueField: '_id',
+      labelField: 'name',
+      sortField: '_id',
+      searchField: 'name',
+      maxItems: 1,
+      placeholder: 'Type your team'
+    };
+
   }]);

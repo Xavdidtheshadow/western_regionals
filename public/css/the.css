@@ -18,14 +18,14 @@ a {
 }
 
 .form-box {
-    padding-top: 20px;
+    padding-top: 0px;
     padding-bottom: 20px;
     width: 70%;
     clear: both;
 }
 
 .sm {
-    width: 40%;
+    width: 20%;
 }
 
 .nav a {
@@ -44,6 +44,10 @@ a {
 /* tablet or smaller */
 @media only screen and (max-device-width: 786px) {
     .form-box {
+        width: 90%;
+    }
+
+    .sm {
         width: 90%;
     }
 }

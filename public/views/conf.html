@@ -1,13 +1,37 @@
-<h2> You're Registered! </h2>
+<h1> You're All Registered! </h1>
 
+<!-- <pre>{{formModel | json}}</pre> -->
+
+<p> 
+    So, what should you do next? I'd hit the <a ui-sref="info">info</a> page to see essential information (or check the <a href="https://www.usquidditch.org/about/West-RC">USQ</a> version) and then maybe <a href="http://ctt.ec/El8P5">tweet</a> about your newly acquired (and quite dapper) volunteer status. It's what the cool kids are doing. 
+</p>
+
+<br/>
+
+<h2> Your Info </h2>
 <div class="form-box sm">
-    <pre>{{info | json}}</pre>
-
+    <p> Available </p>
     <ul class="list-group">
-        <li class="list-group-item" ng-repeat="qual in info">
+        <li class="list-group-item list-group-item-{{colors[date.status]}}" ng-repeat="date in formModel.available">
+            <span ng-show="date.status" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            <span ng-show="!date.status" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            {{' ' + date.name}}
+        </li>
+    </ul>
+    <p> Positions </p>
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-{{colors[qual.status]}}" ng-repeat="qual in formModel.qualifications">
             <span ng-show="qual.status" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
             <span ng-show="!qual.status" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
             {{' ' + qual.name}}
         </li>
     </ul>
+    <p> Playing </p>
+    <ul class="list-group">
+        <li class="list-group-item" ng-class="{true: 'list-group-item-info', false: 'list-group-item-danger'}[formModel.playing]">
+            <span ng-show="formModel.playing === 'true'" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            <span ng-show="formModel.playing !== 'true'" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            {{' ' + formModel.playing}}
+        </li>
+    </ul>    
 </div>
