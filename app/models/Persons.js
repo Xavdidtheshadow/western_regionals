@@ -5,7 +5,7 @@ var PersonSchema = new mongoose.Schema({
   email: String,
   available: Array,
   qualifications: Array,
-  player: Boolean,
+  playing: Boolean,
   team: {type: mongoose.Schema.Types.ObjectId, ref: "Team"},
   other: String
 });

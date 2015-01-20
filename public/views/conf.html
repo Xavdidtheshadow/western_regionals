@@ -3,7 +3,7 @@
 <!-- <pre>{{formModel | json}}</pre> -->
 
 <p> 
-    So, what should you do next? I'd hit the <a ui-sref="info">info</a> page to see essential information (or check the <a href="https://www.usquidditch.org/about/West-RC">USQ</a> version) and then maybe <a href="http://ctt.ec/El8P5">tweet</a> about your newly acquired (and quite dapper) volunteer status. It's what the cool kids are doing. 
+    So, what should you do next? I'd hit the <a ui-sref="info">info</a> page to see essential information (or check the <a href="https://www.usquidditch.org/about/West-RC" target="_blank">USQ</a> version) and then maybe <a href="http://ctt.ec/El8P5">tweet</a> about your newly acquired (and quite dapper) volunteer status. It's what the cool kids are doing. 
 </p>
 
 <br/>
@@ -29,8 +29,8 @@
     <p> Playing </p>
     <ul class="list-group">
         <li class="list-group-item" ng-class="{true: 'list-group-item-info', false: 'list-group-item-danger'}[formModel.playing]">
-            <span ng-show="formModel.playing === 'true'" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-            <span ng-show="formModel.playing !== 'true'" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            <span ng-show="formModel.playing" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            <span ng-show="!formModel.playing" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
             {{' ' + formModel.playing}}
         </li>
     </ul>    
