@@ -28,6 +28,10 @@ a {
     width: 20%;
 }
 
+.error {
+    color: red;
+}
+
 .nav a {
     border-bottom: 1px solid #228B22;
     margin-left: 7px;

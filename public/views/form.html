@@ -77,10 +77,12 @@
       <div class="form-group">
         <label for="submit" class="col-md-4 control-label">Submit</label>
         <div class="col-md-4">
-          <button id="submit" name="submit" class="btn btn-primary" ng-click="createPerson()">Go!</button>
+          <button id="submit" name="submit" class="btn btn-primary" ng-click="createPerson()">Go!</button> 
+          <div class="error" ng-show="error">
+            {{error}} <a href="mailto:david@relatieq.com">David</a>
+          </div>
         </div>
       </div>
-      <!-- {{ loading }} -->
     </fieldset>
   </form>
 </div>

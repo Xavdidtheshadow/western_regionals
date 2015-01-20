@@ -95,7 +95,6 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
       placeholder: 'Type your team'
     };
 
-    $scope.loading = false;
 
     $scope.createPerson = function(){
       // fake some validation
@@ -104,12 +103,14 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
       
       // mongoose isn't casting correctly
       // $scope.formModel.playing = $scope.formModel.playingStr === 'true';
-      $scope.loading = true;
 
-      db.createPerson($scope.formModel).success(function(data){
-        $scope.loading = false;
-        $state.go('confirm');
-      });
+      db.createPerson($scope.formModel)
+        .success(function(data){
+          $state.go('confirm');
+        })
+        .error(function(err){
+          $scope.error = "Server Error! Probably caused by trying to use a non-unique email. If the issue persists, contact";
+        });
     };
 
   }])
