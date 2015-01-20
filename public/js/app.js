@@ -27,6 +27,12 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
           activeTab: "check"
         })
 
+        .state('info', {
+          url: '/info',
+          templateUrl: 'views/info.html',
+          activeTab: "info"
+        })
+
         .state('confirm', {
           url: '/confirm',
           templateUrl: 'views/conf.html',

@@ -28,6 +28,10 @@ a {
     width: 20%;
 }
 
+.md {
+    width: 50%;
+}
+
 .error {
     color: red;
 }
