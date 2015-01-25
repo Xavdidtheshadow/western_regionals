@@ -33,6 +33,12 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
           url: '/confirm',
           templateUrl: 'views/conf.html',
           controller: 'ConfController',
+        })
+
+        .state('stats', {
+          url: '/stats',
+          templateUrl: 'views/stats.html',
+          controller: 'StatsController'
         });
 
       $urlRouterProvider.otherwise('/');
@@ -141,4 +147,8 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
       true: 'info',
       false: 'danger'
     };
+  }])
+
+  .controller('StatsController', ['$scope', 'db', function($scope, db){
+    $scope.num = 33;
   }]);
