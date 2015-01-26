@@ -150,5 +150,11 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
   }])
 
   .controller('StatsController', ['$scope', 'db', function($scope, db){
+    // db call to people.find().count()
     $scope.num = 33;
+    $scope.teams = [
+      {name: 'asdf', num: 3},
+      {name: 'qwer', num: 2},
+      {name: 'zxcv', num: 1}
+    ];
   }]);
