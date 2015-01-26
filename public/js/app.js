@@ -38,6 +38,11 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
         .state('stats', {
           url: '/stats',
           templateUrl: 'views/stats.html',
+          resolve: {
+            peoplePromise: ['db', function(db){
+              return db.getPeople();
+            }]
+          },
           controller: 'StatsController'
         });
 
@@ -48,7 +53,8 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
   // factories
   .factory('db', ['$http', function($http){
     var o = {
-      teams: []
+      teams: [],
+      people: []
     };
 
     o.getTeams = function(){
@@ -57,8 +63,14 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
       });
     };
 
+    o.getPeople = function(){
+      return $http.get('/api/people').success(function(data){
+        angular.copy(data, o.people);
+      });
+    };
+
     o.createPerson = function(p){
-      return $http.post('/api/persons', p).success(function(data){
+      return $http.post('/api/people', p).success(function(data){
         o.info = data;
       });
     };
@@ -150,8 +162,19 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
   }])
 
   .controller('StatsController', ['$scope', 'db', function($scope, db){
-    // db call to people.find().count()
-    $scope.num = 33;
+    console.log(db.people);
+    $scope.num = db.people.length;
+
+    if ($scope.num < 20){
+      $scope.color = 'red';
+    }
+    else if ($scope.num < 40) {
+      $scope.color = 'yellow';
+    }
+    else {
+      $scope.color = 'green';
+    }
+
     $scope.teams = [
       {name: 'asdf', num: 3},
       {name: 'qwer', num: 2},

@@ -6,7 +6,16 @@ module.exports = function(app) {
 	app.get('/api/teams', function(req, res, next){
     Team.find(function(err, teams){
       if(err){return next(err);}
+
       res.json(teams);
+    });
+  });
+
+  app.get('/api/people', function(req, res, next){
+    Person.find(function(err, people){
+      if(err){return next(err);}
+
+      res.json(people);
     });
   });
 
@@ -19,7 +28,7 @@ module.exports = function(app) {
     });
   });
 
-  app.post('/api/persons', function(req, res, next){
+  app.post('/api/people', function(req, res, next){
     var p = new Person(req.body);
 
     p.save(function(err, pers){

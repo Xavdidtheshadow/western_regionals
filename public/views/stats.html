@@ -1,9 +1,9 @@
 <h1> Statistics </h1>
 <br/>
 
-{{ num / 0.6 }}%
+<p> Currently <strong>{{100 * num / 60 | number:0}}%</strong> of goal met! </p>
 <div class="progress">
-    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{num}}" aria-valuemin="0" aria-valuemax="100" style="width: {{num}}%">
+    <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{num}}" aria-valuemin="0" aria-valuemax="100" style="width: {{100 * num / 60 | number:0}}%" ng-class="{red: 'progress-bar-danger', yellow: 'progress-bar-warning', green: 'progress-bar-success'}[color]">
     </div>
 </div>
 
