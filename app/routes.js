@@ -19,12 +19,38 @@ module.exports = function(app) {
     });
   });
 
-  app.get('/api/search/:email', function(req, res){
-    var q = Person.findOne({email: req.params.email});
+  app.get('/api/people/aggregate', function(req, res, next){
+    Person
+      .aggregate([{
+        $group: {
+          _id: "$team", 
+          num: {
+            $sum: 1
+          }
+        }
+      }])
+      .exec(function(err, teams){
+        if(err){return next(err);}
 
-    q.exec(function(err, person){
-      console.log(person);
-      res.json(person);
+        var opts = {
+          path: '_id',
+          model: 'Team'
+        };
+        Team.populate(teams, opts, function(err, teams){
+          if(err){return next(err);}
+
+          res.json(teams);
+        });
+      });
+  });
+
+  app.get('/api/people/:email', function(req, res){
+    Person
+      .findOne({email: req.params.email});
+      exec(function(err, person){
+        if(err){return next(err);}
+
+        res.json(person);
     });
   });
 

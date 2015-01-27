@@ -1,15 +1,12 @@
 <h1> Statistics </h1>
 <br/>
 
-<p> Currently <strong>{{100 * num / 60 | number:0}}%</strong> of goal met! </p>
+<h3> Progress </h3>
+<p> We're <strong>{{100 * num / 60 | number:0}}%</strong> of the way to meeting our goal of 60 registered gameplay volunteers. </p>
 <div class="progress">
     <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{num}}" aria-valuemin="0" aria-valuemax="100" style="width: {{100 * num / 60 | number:0}}%" ng-class="{red: 'progress-bar-danger', yellow: 'progress-bar-warning', green: 'progress-bar-success'}[color]">
     </div>
 </div>
-
-<p> 
-    We've set a goal of 60 referees (an average of 3/team). So far, there are {{num}} volunteers currently signed up.
-</p>
 <br/>
 
 <h3> Top Teams </h3>
@@ -23,9 +20,9 @@ So far, these are the teams that have contributed the most volunteers each.
         <th> Team </th>
     </thead>
     <tbody>
-        <tr ng-repeat="team in teams">
+        <tr ng-repeat="team in teams | orderBy:'-num' | limitTo:5">
             <td> {{team.num}} </td>
-            <td> {{team.name}} </td>
+            <td> {{team._id.name}} </td>
         </tr>
     </tbody>
 </table>

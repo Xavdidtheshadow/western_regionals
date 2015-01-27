@@ -41,6 +41,9 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
           resolve: {
             peoplePromise: ['db', function(db){
               return db.getPeople();
+            }],
+            aggsPromise: ['db', function(db){
+              return db.getAgg();
             }]
           },
           controller: 'StatsController'
@@ -54,12 +57,19 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
   .factory('db', ['$http', function($http){
     var o = {
       teams: [],
-      people: []
+      people: [],
+      aggs: []
     };
 
     o.getTeams = function(){
       return $http.get('/api/teams').success(function(data){
         angular.copy(data, o.teams);
+      });
+    };
+
+    o.getAgg = function(){
+      return $http.get('/api/people/aggregate').success(function(data){
+        angular.copy(data, o.aggs);
       });
     };
 
@@ -76,7 +86,7 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
     };
 
     o.findPerson = function(e){
-      return $http.get('/api/search/' + e).success(function(data){
+      return $http.get('/api/people/' + e).success(function(data){
         o.person = data;
       });
     };
@@ -162,7 +172,7 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
   }])
 
   .controller('StatsController', ['$scope', 'db', function($scope, db){
-    console.log(db.people);
+    // console.log(db.people);
     $scope.num = db.people.length;
 
     if ($scope.num < 20){
@@ -175,9 +185,5 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
       $scope.color = 'green';
     }
 
-    $scope.teams = [
-      {name: 'asdf', num: 3},
-      {name: 'qwer', num: 2},
-      {name: 'zxcv', num: 1}
-    ];
+    $scope.teams = db.aggs;
   }]);
