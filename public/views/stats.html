@@ -2,9 +2,9 @@
 <br/>
 
 <h3> Progress </h3>
-<p> We're <strong>{{100 * num / 60 | number:0}}%</strong> of the way to meeting our goal of 60 registered gameplay volunteers. </p>
+<p> We're <strong>{{100 * num / goal | number:0}}%</strong> of the way to meeting our goal of {{goal}} registered gameplay volunteers. </p>
 <div class="progress">
-    <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{num}}" aria-valuemin="0" aria-valuemax="100" style="width: {{100 * num / 60 | number:0}}%" ng-class="{red: 'progress-bar-danger', yellow: 'progress-bar-warning', green: 'progress-bar-success'}[color]">
+    <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{num}}" aria-valuemin="0" aria-valuemax="100" style="width: {{100 * num / goal | number:0}}%" ng-class="{red: 'progress-bar-danger', yellow: 'progress-bar-warning', green: 'progress-bar-success'}[color]">
     </div>
 </div>
 <br/>
