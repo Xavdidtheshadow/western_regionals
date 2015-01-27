@@ -20,10 +20,27 @@ So far, these are the teams that have contributed the most volunteers each.
         <th> Team </th>
     </thead>
     <tbody>
-        <tr ng-repeat="team in teams | orderBy:'-num' | limitTo:5">
+        <tr ng-repeat="team in teams | orderBy:['-num','_id.name'] | limitTo:5">
             <td> {{team.num}} </td>
             <td> {{team._id.name}} </td>
         </tr>
     </tbody>
 </table>
 </div>
+
+<!-- <div class="form-box">
+<table class="table table-condensed table-hover">
+    <thead>
+        <th> Name </th>
+        <th> Email </th>
+        <th> Team </th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="person in people|orderBy:'name'">
+            <td> {{person.name}} </td>
+            <td> {{person.email}} </td>
+            <td> {{person.team.name}} </td>
+        </tr>
+    </tbody>
+</table>
+</div> -->

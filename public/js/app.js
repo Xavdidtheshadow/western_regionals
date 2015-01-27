@@ -174,6 +174,7 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
   .controller('StatsController', ['$scope', 'db', function($scope, db){
     // console.log(db.people);
     $scope.num = db.people.length;
+    // $scope.people = db.people;
 
     if ($scope.num < 20){
       $scope.color = 'red';

@@ -12,11 +12,14 @@ module.exports = function(app) {
   });
 
   app.get('/api/people', function(req, res, next){
-    Person.find(function(err, people){
-      if(err){return next(err);}
+    Person
+      .find()
+      .populate('team')
+      .exec(function(err, teams){
+        if(err){return next(err);}
 
-      res.json(people);
-    });
+        res.json(teams);
+      });
   });
 
   app.get('/api/people/aggregate', function(req, res, next){
@@ -36,15 +39,17 @@ module.exports = function(app) {
           path: '_id',
           model: 'Team'
         };
+
         Team.populate(teams, opts, function(err, teams){
           if(err){return next(err);}
 
           res.json(teams);
         });
       });
+
   });
 
-  app.get('/api/people/:email', function(req, res){
+  app.get('/api/search/:email', function(req, res){
     Person
       .findOne({email: req.params.email});
       exec(function(err, person){
