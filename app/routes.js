@@ -49,22 +49,22 @@ module.exports = function(app) {
 
   });
 
-  app.get('/api/search/:email', function(req, res){
-    Person
-      .findOne({email: req.params.email});
-      exec(function(err, person){
-        if(err){return next(err);}
-
-        res.json(person);
-    });
-  });
-
   app.post('/api/people', function(req, res, next){
     var p = new Person(req.body);
 
     p.save(function(err, pers){
       if(err){return next(err);}
       res.json(pers);
+    });
+  });
+
+  app.get('/api/search/:email', function(req, res){
+    Person
+      .findOne({email: req.params.email})
+      .exec(function(err, person){
+        if(err){return next(err);}
+
+        res.json(person);
     });
   });
 

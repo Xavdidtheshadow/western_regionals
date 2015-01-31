@@ -86,7 +86,7 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
     };
 
     o.findPerson = function(e){
-      return $http.get('/api/people/' + e).success(function(data){
+      return $http.get('/api/search/' + e).success(function(data){
         o.person = data;
       });
     };
@@ -151,12 +151,16 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
     $scope.searchPerson = function(){
       db.findPerson($scope.model.email)
         .success(function(data){
+          console.log(data);
           if(data){
             $scope.message = "You've registered!";
           }
           else {
             $scope.message = "No registration with that email found.";
           }
+        }).error(function(err){
+          console.log(err);
+          $scope.message = 'Server error'
         });
     };
   }])
