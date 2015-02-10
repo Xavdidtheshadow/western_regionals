@@ -35,6 +35,17 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
           controller: 'ConfController',
         })
 
+        .state('ans', {
+          url: '/ans',
+          templateUrl: 'views/ans.html',
+          controller: 'AnsController',
+          resolve: {
+            peoplePromise: ['db', function(db){
+              return db.getPeople();
+            }]
+          }
+        })
+
         .state('stats', {
           url: '/stats',
           templateUrl: 'views/stats.html',
@@ -160,7 +171,7 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
           }
         }).error(function(err){
           console.log(err);
-          $scope.message = 'Server error'
+          $scope.message = 'Server error';
         });
     };
   }])
@@ -178,7 +189,7 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
   .controller('StatsController', ['$scope', 'db', function($scope, db){
     // console.log(db.people);
     $scope.num = db.people.length;
-    // $scope.people = db.people;
+    $scope.people = db.people;
 
     $scope.goal = 60;
 
@@ -193,4 +204,8 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
     }
 
     $scope.teams = db.aggs;
+  }])
+
+  .controller('AnsController', ['$scope', 'db', function($scope, db){
+    $scope.people = db.people;
   }]);
