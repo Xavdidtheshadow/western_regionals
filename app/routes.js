@@ -25,13 +25,23 @@ module.exports = function(app) {
   app.get('/api/people/aggregate', function(req, res, next){
     Person
       .aggregate([{
-        $group: {
-          _id: "$team", 
-          num: {
-            $sum: 1
+          $unwind: "$team"
+        }, {
+          $group: {
+            _id: "$name",
+            team: {
+              $first: "$team"
+            }
+          }
+        }, {
+          $group: {
+            _id: "$team", 
+            num: {
+              $sum: 1
+            }
           }
         }
-      }])
+      ])
       .exec(function(err, teams){
         if(err){return next(err);}
 
