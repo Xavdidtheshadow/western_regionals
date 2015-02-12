@@ -9,8 +9,8 @@
     </thead>
     <tbody>
         <tr ng-repeat="person in people|orderBy:'name'">
-            <td> {{person.name}} </td>
-            <td> {{person.team.name}} </td>
+            <td> {{ person.name }} </td>
+            <td> {{ person.team }} </td>
             <td> 
                 <span ng-show="person.playing" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                 <span ng-hide="person.playing" class="glyphicon glyphicon-remove" aria-hidden="true"></span>

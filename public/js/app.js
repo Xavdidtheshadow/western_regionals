@@ -207,5 +207,10 @@ var app = angular.module('westernRegionals', ['selectize', 'ui.router'])
   }])
 
   .controller('AnsController', ['$scope', 'db', function($scope, db){
+    db.people.forEach(function(p){
+      p.team = p.team.map(function(elm){
+        return elm.name;
+      }).join(', ');
+    });
     $scope.people = db.people;
   }]);
