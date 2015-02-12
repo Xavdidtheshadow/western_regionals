@@ -7,6 +7,7 @@ var PersonSchema = new mongoose.Schema({
   qualifications: Array,
   playing: Boolean,
   team: [{type: mongoose.Schema.Types.ObjectId, ref: "Team"}],
+  requests: [{type: mongoose.Schema.Types.ObjectId, ref: "Team"}],
   other: String
 });
 

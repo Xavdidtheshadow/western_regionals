@@ -14,7 +14,7 @@ module.exports = function(app) {
   app.get('/api/people', function(req, res, next){
     Person
       .find()
-      .populate('team')
+      .populate('team requests')
       .exec(function(err, teams){
         if(err){return next(err);}
 
